@@ -57,11 +57,13 @@ class KY040
     void HandleSwitchInterrupt( void );
     void HandleRotateInterrupt( void );
     void OnButtonClicked( callback );
+    void OnButtonDoubleClicked( callback );
     void OnButtonLeft( callback );
     void OnButtonRight( callback );
 
   protected:
     callback _OnCbClick;
+    callback _OnCbDblClick;
     callback _OnCbLeft;
     callback _OnCbRight;
 };

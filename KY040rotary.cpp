@@ -87,6 +87,7 @@ void KY040::Process(unsigned long t)
   }
   if ( this->swDebounce && ((t % 1000 - this->swLastTime) > KY040_SW_DEBOUNCE) ) {
     if (digitalRead(this->pinSw) == HIGH) {
+      // TODO: double clikc detection
       if (this->_OnCbClick) this->_OnCbClick();
     }
     this->swState = 0;
@@ -142,6 +143,11 @@ void KY040::DecodeSignals(void)
 void KY040::OnButtonClicked( callback cb )
 {
   this->_OnCbClick = cb;
+}
+
+void KY040::OnButtonDoubleClicked( callback cb )
+{
+  this->_OnCbDblClick = cb;
 }
 
 void KY040::OnButtonLeft( callback cb )
