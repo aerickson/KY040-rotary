@@ -87,7 +87,9 @@ void KY040::Process(unsigned long t)
   }
   if ( this->swDebounce && ((t % 1000 - this->swLastTime) > KY040_SW_DEBOUNCE) ) {
     if (digitalRead(this->pinSw) == HIGH) {
-      // TODO: double clikc detection
+      // TODO: long-press detection? how to do? store down and up time, compare.
+      // TODO: double click detection
+      // - see https://forum.arduino.cc/index.php?topic=421010.0
       if (this->_OnCbClick) this->_OnCbClick();
     }
     this->swState = 0;
